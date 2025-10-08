@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
-import { ArrowRight, ExternalLink } from "lucide-react"
+import { ArrowRight, ExternalLink, BookOpen } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export function HeroSection() {
   return (
@@ -32,9 +33,11 @@ export function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
-            <Button size="lg" className="text-lg px-8 py-6 group">
-              Get Started
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            <Button size="lg" className="text-lg px-8 py-6 group" asChild>
+              <Link href="/docs">
+                Developer Docs
+                <BookOpen className="ml-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+              </Link>
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8 py-6 bg-transparent" asChild>
               <a href="https://exp.0xl3.com/" target="_blank" rel="noopener noreferrer">
