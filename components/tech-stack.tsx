@@ -8,7 +8,7 @@ const techDetails = [
   },
   {
     category: "Performance",
-    items: ["2000+ TPS", "<1s Block Time", "Instant Finality"],
+    items: ["10,000 TPS", "<1s Block Time", "Instant Finality"],
   },
   {
     category: "Compatibility",

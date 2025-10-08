@@ -1,8 +1,18 @@
 "use client"
 
 import { Card } from "@/components/ui/card"
-import { Copy, ExternalLink } from "lucide-react"
+import { Copy, ExternalLink, Wallet } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useState } from "react"
+
+// Extend Window interface for MetaMask
+declare global {
+  interface Window {
+    ethereum?: {
+      request: (args: { method: string; params?: any[] }) => Promise<any>
+    }
+  }
+}
 
 const networkSpecs = [
   {
@@ -28,8 +38,48 @@ const networkSpecs = [
 ]
 
 export function NetworkDetails() {
+  const [isAddingNetwork, setIsAddingNetwork] = useState(false)
+
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text)
+  }
+
+  const addToMetaMask = async () => {
+    if (!window.ethereum) {
+      alert("MetaMask is not installed. Please install MetaMask to add the network.")
+      return
+    }
+
+    setIsAddingNetwork(true)
+
+    try {
+      await window.ethereum.request({
+        method: "wallet_addEthereumChain",
+        params: [
+          {
+            chainId: "0x1BC5", // 7117 in hex
+            chainName: "0xL3 Chain",
+            nativeCurrency: {
+              name: "XL3",
+              symbol: "XL3",
+              decimals: 18,
+            },
+            rpcUrls: ["https://rpc.0xl3.com"],
+            blockExplorerUrls: ["https://exp.0xl3.com/"],
+          },
+        ],
+      })
+      alert("0xL3 network has been added to MetaMask successfully!")
+    } catch (error: any) {
+      console.error("Error adding network to MetaMask:", error)
+      if (error.code === 4001) {
+        alert("User rejected the request to add the network.")
+      } else {
+        alert("Failed to add network to MetaMask. Please try again or add manually.")
+      }
+    } finally {
+      setIsAddingNetwork(false)
+    }
   }
 
   return (
@@ -75,7 +125,14 @@ export function NetworkDetails() {
             <div className="space-y-4">
               <h3 className="text-xl font-semibold">Add to MetaMask</h3>
               <p className="text-muted-foreground">{"Connect your wallet to 0xL3 network with one click"}</p>
-              <Button className="w-full sm:w-auto">Add Network to Wallet</Button>
+              <Button 
+                className="w-full sm:w-auto" 
+                onClick={addToMetaMask}
+                disabled={isAddingNetwork}
+              >
+                <Wallet className="mr-2 h-4 w-4" />
+                {isAddingNetwork ? "Adding Network..." : "Add Network to Wallet"}
+              </Button>
             </div>
           </Card>
         </div>

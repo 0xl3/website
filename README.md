@@ -1,30 +1,76 @@
-# 0xL3 Blockchain Page
+# 0xL3 Chain — Website
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+Beyond Transactions, Building Trust
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/dome1s-projects/v0-0x-l3-blockchain-page)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/projects/JZJsc6Sp5ZH)
+## Project Overview
 
-## Overview
+- 0xL3 is a Layer 3 blockchain built on Optimism Rollup (a rollup on Optimism)
+- RPC: `https://rpc.0xl3.com` (use HTTP `POST`)
+- Chain ID: `7117`
+- Block Explorer: `https://exp.0xl3.com/`
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+This repository contains the landing/information website for the 0xL3 network, built with Next.js and TailwindCSS using Radix UI components.
+
+## Tech Stack
+
+- `Next.js 15`
+- `React 19`
+- `TailwindCSS 4`
+- `Radix UI`
+
+## Getting Started (for website development)
+
+Prerequisites:
+- Node.js `>= 18`
+- `pnpm >= 8`
+
+Basic commands:
+- Install dependencies: `pnpm install`
+- Run development server: `pnpm dev`
+- Create production build: `pnpm build`
+- Start production build: `pnpm start`
+
+## Wallet Network Settings
+
+To add the network in MetaMask, use:
+- Network Name: `0xL3 Chain`
+- RPC URL: `https://rpc.0xl3.com`
+- Chain ID: `7117`
+- Block Explorer URL: `https://exp.0xl3.com/`
+- Currency Symbol: `XL3`
+
+JSON-RPC examples (HTTP POST):
+
+```bash
+curl -X POST https://rpc.0xl3.com \
+  -H 'Content-Type: application/json' \
+  --data '{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_chainId",
+    "params": []
+  }'
+
+curl -X POST https://rpc.0xl3.com \
+  -H 'Content-Type: application/json' \
+  --data '{
+    "jsonrpc": "2.0",
+    "id": 2,
+    "method": "eth_blockNumber",
+    "params": []
+  }'
+```
+
+## Explorer
+
+- View blocks, transactions, and network stats at `https://exp.0xl3.com/`
 
 ## Deployment
 
-Your project is live at:
+- Ready for deployment on platforms such as Vercel
+- Configure any required environment variables for deployment if applicable
 
-**[https://vercel.com/dome1s-projects/v0-0x-l3-blockchain-page](https://vercel.com/dome1s-projects/v0-0x-l3-blockchain-page)**
+## License & Usage
 
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.app/chat/projects/JZJsc6Sp5ZH](https://v0.app/chat/projects/JZJsc6Sp5ZH)**
-
-## How It Works
-
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+- This codebase is for the 0xL3 website
+- Network details may be updated periodically; please check `https://exp.0xl3.com/` for the latest information
