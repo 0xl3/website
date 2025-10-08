@@ -11,6 +11,13 @@ export const metadata: Metadata = {
     "Layer 3 blockchain powered by Optimism Rollup. Unparalleled scalability, security, and efficiency.",
   generator: "v0.app",
   metadataBase: new URL("https://0xl3.com"),
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     title: "0xL3 — Beyond Transactions, Building Trust",
     description:
