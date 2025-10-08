@@ -79,8 +79,14 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a 
+                  href="https://github.com/0xl3" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1"
+                >
                   GitHub
+                  <ExternalLink className="h-3 w-3" />
                 </a>
               </li>
             </ul>

@@ -174,6 +174,107 @@ export function NetworkDetails() {
             ))}
           </div>
 
+          {/* XL3 Token Acquisition Guide */}
+          <div className="space-y-6">
+            <div className="text-center space-y-2">
+              <h3 className="text-2xl md:text-3xl font-bold">How to Acquire XL3 Tokens</h3>
+              <p className="text-muted-foreground">Step-by-step guide to purchase and bridge XL3 tokens for use on the XL3 Blockchain</p>
+            </div>
+            
+            <div className="grid gap-6 lg:grid-cols-3">
+              {/* Step 1: Buy XL3 */}
+              <Card className="p-6 space-y-4 bg-gradient-to-br from-green-500/5 to-emerald-500/5 border-green-500/20">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm">
+                    1
+                  </div>
+                  <h4 className="text-lg font-semibold">Buy XL3 on Uniswap</h4>
+                </div>
+                <div className="space-y-3 text-sm text-muted-foreground">
+                  <p>• Connect your wallet to Optimism network</p>
+                  <p>• Prepare USDT for purchasing XL3 tokens</p>
+                  <p>• Click the "Buy on Uniswap" button below</p>
+                  <p>• Swap USDT for XL3 on Uniswap V4</p>
+                </div>
+                <Button 
+                  className="w-full" 
+                  onClick={openUniswap}
+                  size="sm"
+                >
+                  <ShoppingCart className="mr-2 h-4 w-4" />
+                  Buy XL3 on Uniswap
+                </Button>
+              </Card>
+
+              {/* Step 2: Bridge XL3 */}
+              <Card className="p-6 space-y-4 bg-gradient-to-br from-blue-500/5 to-purple-500/5 border-blue-500/20">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm">
+                    2
+                  </div>
+                  <h4 className="text-lg font-semibold">Bridge to XL3 Chain</h4>
+                </div>
+                <div className="space-y-3 text-sm text-muted-foreground">
+                  <p>• Open the Bridge using our provided link</p>
+                  <p>• Select bridge from Optimism to 0xL3 Chain</p>
+                  <p>• Enter the amount of XL3 to bridge</p>
+                  <p>• Confirm the transaction in your wallet</p>
+                </div>
+                <Button 
+                  className="w-full" 
+                  onClick={openBridge}
+                  size="sm"
+                >
+                  <ArrowUpDown className="mr-2 h-4 w-4" />
+                  Open Bridge
+                </Button>
+              </Card>
+
+              {/* Step 3: Wait and Check */}
+              <Card className="p-6 space-y-4 bg-gradient-to-br from-purple-500/5 to-pink-500/5 border-purple-500/20">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-purple-500 text-white flex items-center justify-center font-bold text-sm">
+                    3
+                  </div>
+                  <h4 className="text-lg font-semibold">Wait and Check Balance</h4>
+                </div>
+                <div className="space-y-3 text-sm text-muted-foreground">
+                  <p>• Wait approximately <strong>10 minutes</strong> after bridging</p>
+                  <p>• Add 0xL3 network to your wallet</p>
+                  <p>• Switch network to 0xL3 Chain</p>
+                  <p>• Check your XL3 balance in wallet</p>
+                </div>
+                <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-3">
+                  <p className="text-xs text-yellow-700 dark:text-yellow-300 font-medium">
+                    ⏱️ Waiting time: Approximately 10 minutes
+                  </p>
+                </div>
+              </Card>
+            </div>
+
+            {/* Important Notes */}
+            <Card className="p-6 bg-gradient-to-r from-orange-500/5 to-red-500/5 border-orange-500/20">
+              <div className="space-y-4">
+                <h4 className="text-lg font-semibold flex items-center gap-2">
+                  <span className="text-orange-500">⚠️</span>
+                  Important Information
+                </h4>
+                <div className="grid gap-3 md:grid-cols-2 text-sm text-muted-foreground">
+                  <div className="space-y-2">
+                    <p><strong>• Source Network:</strong> Optimism Mainnet</p>
+                    <p><strong>• Destination Network:</strong> 0xL3 Chain</p>
+                    <p><strong>• Bridge Time:</strong> Approximately 10 minutes</p>
+                  </div>
+                  <div className="space-y-2">
+                    <p><strong>• Gas Fee:</strong> Paid with ETH on Optimism</p>
+                    <p><strong>• Trading Pair:</strong> XL3/USDT</p>
+                    <p><strong>• Protocol:</strong> Uniswap V4</p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+
           {/* XL3 Token Information */}
           <div className="space-y-6">
             <div className="text-center space-y-2">
@@ -306,7 +407,7 @@ export function NetworkDetails() {
                   </Button>
                   
                   <div className="text-center text-sm text-muted-foreground">
-                    <p>Transfer time: ~1 minute • Gas fee: Paid in ETH</p>
+                    <p>Transfer time: ~10 minutes • Gas fee: Paid in ETH</p>
                   </div>
                 </div>
               </div>
