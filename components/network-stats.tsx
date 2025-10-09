@@ -37,6 +37,19 @@ export default function NetworkStats() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
+  const formatNumber = (num: string | number) => {
+    const value = typeof num === 'string' ? parseInt(num) : num
+    return value.toLocaleString()
+  }
+
+  const formatBlockTime = (ms: number) => {
+    return `${(ms / 1000).toFixed(1)}s`
+  }
+
+  const formatPercentage = (value: number) => {
+    return `${(value * 100).toFixed(2)}%`
+  }
+
   useEffect(() => {
     const fetchStats = async () => {
       try {
@@ -59,24 +72,6 @@ export default function NetworkStats() {
     
     return () => clearInterval(interval)
   }, [])
-
-  const formatNumber = (num: string | number) => {
-    const value = typeof num === 'string' ? parseInt(num) : num
-    if (value >= 1000000) {
-      return `${(value / 1000000).toFixed(1)}M`
-    } else if (value >= 1000) {
-      return `${(value / 1000).toFixed(1)}K`
-    }
-    return value.toLocaleString()
-  }
-
-  const formatBlockTime = (ms: number) => {
-    return `${(ms / 1000).toFixed(1)}s`
-  }
-
-  const formatPercentage = (value: number) => {
-    return `${(value * 100).toFixed(2)}%`
-  }
 
   if (loading) {
     return (
@@ -120,8 +115,10 @@ export default function NetworkStats() {
         </h2>
         <p className="text-muted-foreground">Real-time blockchain metrics and performance data</p>
         <div className="flex items-center justify-center gap-2 mt-2">
-          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-          <span className="text-xs text-green-600 font-medium">Live Data</span>
+          <div className="w-2 h-2 rounded-full animate-pulse bg-green-500"></div>
+          <span className="text-xs font-medium text-green-600">
+            Live Data (HTTP)
+          </span>
         </div>
       </div>
 
@@ -259,8 +256,10 @@ export default function NetworkStats() {
       <div className="text-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-muted rounded-full">
           <div className="flex items-center gap-1">
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <span className="text-xs font-medium">Auto-refresh every 30s</span>
+            <div className="w-2 h-2 rounded-full animate-pulse bg-green-500"></div>
+            <span className="text-xs font-medium">
+              HTTP Polling
+            </span>
           </div>
           <span className="text-xs text-muted-foreground">•</span>
           <span className="text-xs text-muted-foreground">Powered by Blockscout</span>
